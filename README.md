@@ -1,2 +1,2 @@
 # csd-310
-CSD 310 Assignment 1
+CSD-310 assignment_1
