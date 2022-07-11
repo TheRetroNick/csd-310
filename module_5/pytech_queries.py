@@ -9,7 +9,7 @@ client = pymongo.MongoClient('mongodb+srv://admin:admin@cluster0.cbez6.mongodb.n
 db = client['pytech']
 
 # query which student you want to find
-line = db.students.find_one({'student_id': '1008'})
+doc = db.students.find_one({'student_id': '1008'})
 
 # output the query
-print(line)
+print(doc)
