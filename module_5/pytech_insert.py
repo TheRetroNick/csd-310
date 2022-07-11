@@ -1,34 +1,15 @@
+# Assignment 5.3 - pytech_insert
 
+import pymongo
 
-db.movies.insertOne(
-  {
-    title: "The Favourite",
-    genres: [ "Drama", "History" ],
-    runtime: 121,
-    rated: "R",
-    year: 2018,
-    directors: [ "Yorgos Lanthimos" ],
-    cast: [ "Olivia Colman", "Emma Stone", "Rachel Weisz" ],
-    type: "movie"
-  }
-)
+# call the server
+client = pymongo.MongoClient('mongodb+srv://admin:admin@cluster0.cbez6.mongodb.net/?retryWrites=true&w=majority')
+# select the databse you want
+db = client['pytech']
 
+# mycol = db['students'] If you want to put all 3 students in at once, but not using it here 
 
-fred = {
- “first_name”: “Fred”
-}
- 
-fred_student_id = students.insert_one(fred).inserted_id
- 
-print(fred_student_id)
- 
-MongoDB: find() Example 
-docs = db.collection_name.find({})
- 
-for doc in docs:
- print(doc)
- 
-MongoDB: find_one() Example 
-doc = db.collection_name.find_one({“student_id”: “1007”})
- 
-print(doc[“student_id”])
+# add each of the 3 new students to the database. Make sure you use 'students'
+db.students.insert_one({'student_id': '1007', 'firstName': 'fred'})
+db.students.insert_one({'student_id': '1008', 'firstName': 'barney'})
+db.students.insert_one({'student_id': '1009', 'firstName': 'dino'})
