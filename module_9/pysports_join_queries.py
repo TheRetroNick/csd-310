@@ -47,7 +47,7 @@ try:
         print("Player ID: {}".format(player[0]))
         print("First Name: {}".format(player[1]))
         print("Last Name: {}".format(player[2]))
-        print("Team ID: {}".format(player[3]))
+        print("Team Name: {}".format(player[3]))
         print()
     input("\n\n Press any key to continue...")
 
