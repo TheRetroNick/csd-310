@@ -1,6 +1,6 @@
 # Nick Schmid
-# Assignment 8.3
-# Pysports Queries
+# Assignment 9.2
+# Pysports Join
 
 from re import template
 from tkinter.tix import Select
