@@ -10,6 +10,15 @@
     Description: WhatABook database initialization script.
 */
 
+-- Drop the database if it alrady exists
+DROP DATABASE IF EXISTS whatabook;
+
+-- Recreate the WhatABook database
+CREATE DATABASE whatabook;
+
+-- Select the new database
+USE whatabook
+
 -- drop test user if exists 
 DROP USER IF EXISTS 'whatabook_user'@'localhost';
 
@@ -20,8 +29,8 @@ CREATE USER 'whatabook_user'@'localhost' IDENTIFIED WITH mysql_native_password B
 GRANT ALL PRIVILEGES ON whatabook.* TO'whatabook_user'@'localhost';
 
 -- drop contstraints if they exist
-ALTER TABLE wishlist DROP FOREIGN KEY fk_book;
-ALTER TABLE wishlist DROP FOREIGN KEY fk_user;
+-- ALTER TABLE wishlist DROP FOREIGN KEY fk_book;
+-- ALTER TABLE wishlist DROP FOREIGN KEY fk_user;
 
 -- drop tables if they exist
 DROP TABLE IF EXISTS store;
@@ -66,44 +75,48 @@ CREATE TABLE wishlist (
         REFERENCES user(user_Id)
 );
 
+-- drop contstraints if they exist
+ALTER TABLE wishlist DROP FOREIGN KEY fk_book;
+ALTER TABLE wishlist DROP FOREIGN KEY fk_user;
+
 /*
-    insert store record 
+    insert store record - 1 location required
 */
 INSERT INTO store(locale)
-    VALUES('1000 Galvin Rd S, Bellevue, NE 68005');
+    VALUES('1600 Pennsylvania Ave NW, Washington, D.C. 20006');
 
 /*
-    insert book records 
+    insert book records - 9 required
 */
 INSERT INTO book(book_name, author, details)
-    VALUES('The Hitchhikers Guide to the Galaxy', 'Douglas Adams', 'The meaning of Life, the Universe, and Everything is 42.');
+    VALUES('The Hitchhikers Guide to the Galaxy', 'Douglas Adams', 'The meaning of life, the universe, and everything is 42.');
 
 INSERT INTO book(book_name, author, details)
-    VALUES('Fight Club', 'Chuck Palahniuk', 'You do not talk about Fight Club.');
+    VALUES('Fight Club', 'Chuck Palahniuk', 'It has been, like, 25 years. Can we talk about it?');
 
-INSERT INTO book(book_name, author)
-    VALUES('Choke', 'Chuck Palaniuk');
+INSERT INTO book(book_name, author, details)
+    VALUES('Choke', 'Chuck Palaniuk', 'Fight Club was better.');
 
 INSERT INTO book(book_name, author, details)
     VALUES('The Restaurant at the End of the Universe', 'Douglas Adams', 'Sequel to Hitchhikers Guide to the Galaxy.');
 
-INSERT INTO book(book_name, author)
-    VALUES('Journey ot the Center of the Earth', 'Jules Verne');
+INSERT INTO book(book_name, author, details)
+    VALUES('Journey to the Center of the Earth', 'Jules Verne', 'A better title than, Spelunking to the Core.');
 
 INSERT INTO book(book_name, author, details)
-    VALUES("Sherlock Holmes", 'Arthur Conan Doyle', '"Elementary, my dear Watson," is not actually said by Homles.');
+    VALUES('Sherlock Holmes', 'Arthur Conan Doyle', 'Elementary, my dear Watson, is never actually said by Homles.');
 
 INSERT INTO book(book_name, author, details)
-    VALUES('The Time Machine', 'H.G. Wells', 'No flux capacitors here.');
+    VALUES('The Time Machine', 'H.G. Wells', 'They had flux capacitors in Victorian England.');
 
-INSERT INTO book(book_name, author)
-    VALUES('The War of the Worlds', 'H.G. Wells');
+INSERT INTO book(book_name, author, details)
+    VALUES('The War of the Worlds', 'H.G. Wells', 'Where are Will Smith and Jeff Goldblum when you need them?');
 
-INSERT INTO book(book_name, author)
-    VALUES('20,000 Leagues Under the Sea', 'Jules Verne');
+INSERT INTO book(book_name, author, details)
+    VALUES('20,000 Leagues Under the Sea', 'Jules Verne', 'Submersible ship vs giant squid.');
 
 /*
-    insert user
+    insert users - 3 required
 */ 
 INSERT INTO user(first_name, last_name) 
     VALUES('James', 'Bond');
